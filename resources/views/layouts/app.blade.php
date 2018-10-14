@@ -25,8 +25,10 @@
             <div class="col-sm">
                 <nav>
                     <a href="/">home</a>
+                    @auth
                 <a href="{{ route('question.create') }}">ask</a>
-                    <a href="#">categories</a>
+                @endauth
+                 {{-- <a href="#">categories</a> --}}
                 </nav>
             </div>
             <div class="col-sm text-sm-right">
@@ -56,11 +58,11 @@
                 @yield('main_content')
               </div>
               <div class="col-sm-4 p-3">
-
+                @yield('side_content')
               </div>
           </div>
       </div>
-      <footer class="container mt-2">
+      <footer class="container mt-2 mb-2">
         <div class="row">
             <div class="col-sm-12 small text-muted">
                 Powered by Quan (&copy;) 2018 | Developed by <a href="https://github.com/damianbal">damianbal</a>
