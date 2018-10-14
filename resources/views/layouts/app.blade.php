@@ -34,7 +34,7 @@
             <div class="col-sm text-sm-right">
                              <nav>
                                  @auth 
-                    <a href="#">account ({{ auth()->user()->name }})</a>
+                             <a href="{{ route('user.show', auth()->user()->id) }}">account ({{ auth()->user()->name }})</a>
                              <a href="{{ route('auth.sign_out') }}">sign out</a>
                     @endauth
 

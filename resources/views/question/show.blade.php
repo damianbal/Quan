@@ -14,7 +14,7 @@
 
 <section class="mb-3">
 <h3>{{ $question->title }}</h3>
-<div class="text-muted">Asked by {{ $question->user->name }} {{ $question->created_at->diffForHumans() }}</div>
+<div class="text-muted">Asked by @include('partials.user_link', ['user' => $question->user]) {{ $question->created_at->diffForHumans() }}</div>
 </section>
 
 <section class="mb-3 mt-3 text-muted p-2">

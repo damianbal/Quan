@@ -35,6 +35,7 @@ Route::delete('/questions/{question}', 'QuestionController@destroy')->name('ques
 | User
 |--------------------------------------------------------------------------
  */
+Route::get('/users/{user}', 'UserController@show')->name('user.show');
 
  /*
 |--------------------------------------------------------------------------

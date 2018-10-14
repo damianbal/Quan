@@ -18,18 +18,20 @@
 <div class="card mb-3 shadow-sm">
     <div class="card-header">Categories</div>
  
-<ul class="list-group list-group-flush">
+<div class="list-group list-group-flush">
     @foreach($categories as $cat)
-        <li class="list-group-item">{{ $cat->title }}</li>
+        <a href="#" class="list-group-item list-group-item-action">{{ $cat->title }}</a>
     @endforeach
-</ul>
+</div>
    
 </div>
 
 <div class="card mb-3">
     <div class="card-header">Top users</div>
-    <div class="card-body">
-
+    <div class="list-group list-group-flush">
+        @foreach($topUsers as $u)
+            <a href="#" class="list-group-item list-group-item-action">{{ $u->name }} ({{ $u->answers->count() }} answers)</a>
+        @endforeach
     </div>
 </div>
 

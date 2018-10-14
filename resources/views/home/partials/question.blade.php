@@ -5,7 +5,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 text-muted small">
-            Created by {{ $q->user->name ?? 'User' }} {{ $q->created_at->diffForHumans() ?? '???' }} | Answers: {{ $q->answers->count() }}
+            Created by @include('partials.user_link', ['user' => $q->user]) {{ $q->created_at->diffForHumans() ?? '???' }} | Answers: {{ $q->answers->count() }}
         </div>
     </div>
 </article>
