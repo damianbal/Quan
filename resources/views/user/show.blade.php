@@ -28,7 +28,7 @@
             @else 
                <div class="list-group">
                     @foreach($latestAnswers as $a)
-                        <a href="#" class="list-group-item list-group-item-action">{{ $a->question->title }} ({{ $a->created_at->diffForHumans() }})</a>
+                         <a href="{{ route('question.show', $a->question->id) }}" class="list-group-item list-group-item-action">{{ $a->question->title }} ({{ $a->created_at->diffForHumans() }})</a>
                     @endforeach
             </div>
             @endif
@@ -42,7 +42,7 @@
             @else 
             <div class="list-group">
                     @foreach($latestQuestions as $q)
-                        <a href="#" class="list-group-item list-group-item-action">{{ $q->title }} ({{ $q->created_at->diffForHumans() }})</a>
+                        <a href="{{ route('question.show', $q->id) }}" class="list-group-item list-group-item-action">{{ $q->title }} ({{ $q->created_at->diffForHumans() }})</a>
                     @endforeach
             </div>
             @endif

@@ -20,7 +20,7 @@
  
 <div class="list-group list-group-flush">
     @foreach($categories as $cat)
-        <a href="#" class="list-group-item list-group-item-action">{{ $cat->title }}</a>
+<a href="{{ route('category.show', $cat->id) }}" class="list-group-item list-group-item-action">{{ $cat->title }} ({{ $cat->questions->count() }} questions)</a>
     @endforeach
 </div>
    
@@ -30,7 +30,7 @@
     <div class="card-header">Top users</div>
     <div class="list-group list-group-flush">
         @foreach($topUsers as $u)
-            <a href="#" class="list-group-item list-group-item-action">{{ $u->name }} ({{ $u->answers->count() }} answers)</a>
+    <a href="{{ route('user.show', $u->id) }}" class="list-group-item list-group-item-action">{{ $u->name }} ({{ $u->answers->count() }} answers)</a>
         @endforeach
     </div>
 </div>

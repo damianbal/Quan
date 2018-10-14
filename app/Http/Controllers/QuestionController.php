@@ -35,7 +35,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::withCount('questions')->orderBy('questions_count', 'DESC')->get();
 
         return view('question.create', ['categories' => $categories]);
     }

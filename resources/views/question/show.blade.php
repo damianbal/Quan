@@ -14,7 +14,7 @@
 
 <section class="mb-3">
 <h3>{{ $question->title }}</h3>
-<div class="text-muted">Asked by @include('partials.user_link', ['user' => $question->user]) {{ $question->created_at->diffForHumans() }}</div>
+<div class="text-muted">Asked by @include('partials.user_link', ['user' => $question->user]) {{ $question->created_at->diffForHumans() }}</div> in @include('partials.category_link', ['category' => $question->category])
 </section>
 
 <section class="mb-3 mt-3 text-muted p-2">
@@ -23,7 +23,7 @@
 
 <section class="p-2">
     @if($question->answers->count() > 0)
-        <h4>Answers ({{ $question->answers->count() }})</h4>
+        <h5 class="text-muted mb-2">Answers ({{ $question->answers->count() }})</h5>
 
         @foreach($question->answers as $answer)
             @include('question.partials.answer', ['answer' => $answer])

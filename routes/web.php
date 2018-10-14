@@ -37,6 +37,13 @@ Route::delete('/questions/{question}', 'QuestionController@destroy')->name('ques
  */
 Route::get('/users/{user}', 'UserController@show')->name('user.show');
 
+/*
+|--------------------------------------------------------------------------
+| Category
+|--------------------------------------------------------------------------
+ */
+Route::get('/category/{category}', 'CategoryController@show')->name('category.show');
+
  /*
 |--------------------------------------------------------------------------
 | Answer

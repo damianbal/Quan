@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Answer;
 
 class CategoryController extends Controller
 {
@@ -46,7 +47,16 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $questions = $category->questions()->latest()->paginate(10);
+
+        $answers = $category->questions()->answered();
+
+        $answeredQuestionsCount = $answers->count();
+
+        return view('category.show', [
+                'category' => $category, 'questions' => $questions,
+                'answeredQuestionsCount' => $answeredQuestionsCount,
+        ]);
     }
 
     /**

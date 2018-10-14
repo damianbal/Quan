@@ -12,4 +12,12 @@ class Question extends Model
     use BelongsToCategory, BelongsToUser, HasAnswers;
 
     protected $fillable = ['title', 'user_id', 'body'];
+
+    /** 
+     * Questions which have at least one answer
+     */
+    public function scopeAnswered($query)
+    {
+        return $query->has('answers');
+    }
 }
