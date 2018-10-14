@@ -1,0 +1,59 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Variables
+@import 'variables';
+
+$theme-colors: (
+  "primary": #9561E2,
+  "danger": #E3342F,
+  "dark": #22292F,
+);
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.text-match-bg {
+  color: rgba(255,255,255,0.5);
+}
+
+.site-container {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.bg-nav {
+  background: rgba(0,0,0,0.3);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  nav {
+    a {
+      color:rgba(255,255,255,0.5);
+      transition: 1.0s;
+      padding-right:5px;
+
+    }
+    a:hover {
+      color:rgba(255,255,255,0.9);
+      text-decoration: underline;
+      transition: 1.0s;
+      text-shadow: -1px 0px 1px rgba(0,0,0,0.5);
+    }
+  }
+}
+
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container {
+  max-width: 1200px;
+}
