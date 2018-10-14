@@ -1,8 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
+@can('delete', $question)
+<section class="mb-3">
+    <h3 class="text-muted mb-3">Manage Question</h3>
+    <form method="POST" action="{{ route('question.delete', $question->id) }}">
+        @method('DELETE')
+        @csrf
+        <button class="btn btn-outline-danger">Delete Question</button>
+    </form>
+</section>
+@endcan
+
 <section class="mb-3">
 <h3>{{ $question->title }}</h3>
+<div class="text-muted">Asked by {{ $question->user->name }} {{ $question->created_at->diffForHumans() }}</div>
 </section>
 
 <section class="mb-3 mt-3 text-muted p-2">

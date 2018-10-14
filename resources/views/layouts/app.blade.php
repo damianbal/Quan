@@ -25,7 +25,7 @@
             <div class="col-sm">
                 <nav>
                     <a href="/">home</a>
-                    <a href="#">ask</a>
+                <a href="{{ route('question.create') }}">ask</a>
                     <a href="#">categories</a>
                 </nav>
             </div>

@@ -25,8 +25,10 @@ Route::get('/sign-out', 'AuthController@signOut')->name('auth.sign_out')->middle
 | Question
 |--------------------------------------------------------------------------
  */
-Route::get('/question/{question}', 'QuestionController@show')->name('question.show');
-Route::get('/question/create', 'QuestionController@create')->name('question.create')->middleware('auth');
+Route::get('/questions/{question}', 'QuestionController@show')->name('question.show');
+Route::get('/ask', 'QuestionController@create')->name('question.create')->middleware('auth');
+Route::post('/question', 'QuestionController@store')->name('question.store')->middleware('auth');
+Route::delete('/questions/{question}', 'QuestionController@destroy')->name('question.delete')->middleware('auth');
 
  /*
 |--------------------------------------------------------------------------
@@ -39,4 +41,4 @@ Route::get('/question/create', 'QuestionController@create')->name('question.crea
 | Answer
 |--------------------------------------------------------------------------
  */
-Route::post('/question/{question}/answers', 'AnswerController@store')->name('answer.store')->middleware('auth');
+Route::post('/questions/{question}/answers', 'AnswerController@store')->name('answer.store')->middleware('auth');

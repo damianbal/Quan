@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Question;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\StoreQuestionRequest;
+use App\Services\QuestionsService;
 
 class QuestionController extends Controller
 {
+    /** @var QuestionsService */
+    protected $questionsService = null;
+
+    public function __construct(QuestionsService $questionsService)
+    {
+        $this->questionsService = $questionsService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +35,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $categories = Category::all()->get();
+        $categories = Category::all();
 
         return view('question.create', ['categories' => $categories]);
     }
@@ -36,9 +46,21 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request)
     {
-        //
+        $question = $this->questionsService->createQuestion(
+            Category::find($request->get('category')),
+            auth()->user(),
+            $request->get('title'),
+            $request->get('body')
+        );
+
+        if(!$question)
+        {
+            return back()->with('errors', ['Could not create question!']);
+        }
+
+        return redirect()->route('question.show', $question->id);
     }
 
     /**
@@ -83,6 +105,13 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        if(!auth()->user()->can('delete', $question))
+        {
+            return back()->with('errors', ['You can not delete that question!']);
+        }
+
+        $question->delete();
+
+        return redirect()->route('home')->with('messages', ['Question was removed!']);
     }
 }
