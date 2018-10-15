@@ -26,7 +26,7 @@
    
 </div>
 
-<div class="card mb-3">
+<div class="card mb-3 shadow-sm">
     <div class="card-header">Top users</div>
     <div class="list-group list-group-flush">
         @foreach($topUsers as $u)

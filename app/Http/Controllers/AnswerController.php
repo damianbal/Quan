@@ -91,6 +91,18 @@ class AnswerController extends Controller
         //
     }
 
+    public function upvote(Answer $answer)
+    {
+        if(!auth()->user()->can('upvote', $answer))
+        { 
+            return back()->with('messages', ['You can not upvote your own answer!']);
+        }
+
+        $answer->upvote(auth()->user());
+
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -99,6 +111,13 @@ class AnswerController extends Controller
      */
     public function destroy(Answer $answer)
     {
-        //
+        if(!auth()->user()->can('delete', $answer))
+        {
+            return back()->with('errors', ['You can not remove that answer!']);
+        }
+
+        $answer->delete();
+
+        return back()->with('messages', ['Answer removed!']);
     }
 }

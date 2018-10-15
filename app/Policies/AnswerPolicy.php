@@ -24,4 +24,9 @@ class AnswerPolicy
     {
         return $user->admin == true;
     }
+
+    public function upvote(User $user, Answer $answer)
+    {
+        return $user->id != $answer->user_id;
+    }
 }

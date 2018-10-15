@@ -22,11 +22,13 @@
 </section>
 
 <section class="p-2">
-    @if($question->answers->count() > 0)
-        <h5 class="text-muted mb-2">Answers ({{ $question->answers->count() }})</h5>
+    @if($answers->count() > 0)
+        <h5 class="text-muted mb-2">Answers ({{ $answers->count() }})</h5>
 
-        @foreach($question->answers as $answer)
-            @include('question.partials.answer', ['answer' => $answer])
+        @foreach($answers as $answer)
+            @include('question.partials.answer', [
+                'answer' => $answer
+            ])
         @endforeach
     @else 
         <div class="bg-light text-muted p-3 rounded shadow-sm">There is no answers to that question, be first to answer it!</div>

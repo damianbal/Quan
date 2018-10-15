@@ -11,7 +11,7 @@ class Question extends Model
 {
     use BelongsToCategory, BelongsToUser, HasAnswers;
 
-    protected $fillable = ['title', 'user_id', 'body'];
+    protected $fillable = ['title', 'user_id', 'body', 'category_id'];
 
     /** 
      * Questions which have at least one answer

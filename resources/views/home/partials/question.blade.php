@@ -1,4 +1,8 @@
+@if($q->answers->count() == 0)
 <article class="bg-light p-3 rounded shadow-sm mb-3">
+@else
+<article class="bg-light p-3 rounded shadow-sm mb-3 bg-white">
+@endif
     <div class="row">
     <div class="col-sm-6"><a href="{{ route('question.show', $q->id) }}"><h5>{{ $q->title ?? 'Question Title' }}</h5></a></div>
         <div class="col-sm-6 text-sm-right">@include('partials.category_link', ['category' => $q->category])</div>

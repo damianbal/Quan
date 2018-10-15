@@ -50,3 +50,5 @@ Route::get('/category/{category}', 'CategoryController@show')->name('category.sh
 |--------------------------------------------------------------------------
  */
 Route::post('/questions/{question}/answers', 'AnswerController@store')->name('answer.store')->middleware('auth');
+Route::delete('/answers/{answer}', 'AnswerController@destroy')->name('answer.delete')->middleware('auth');
+Route::post('/answers/{answer}/upvote', 'AnswerController@upvote')->name('answer.upvote')->middleware('auth');

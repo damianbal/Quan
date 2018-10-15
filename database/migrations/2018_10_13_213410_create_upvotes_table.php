@@ -15,6 +15,8 @@ class CreateUpvotesTable extends Migration
     {
         Schema::create('upvotes', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('answer_id');
             $table->timestamps();
         });
     }

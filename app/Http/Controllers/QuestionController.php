@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Services\QuestionsService;
+use App\Answer;
 
 class QuestionController extends Controller
 {
@@ -71,7 +72,14 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        return view('question.show', ['question' => $question]);
+        $a = Answer::withCount('votes')->whereQuestion($question)
+                                        ->orderBy('votes_count', 'DESC')
+                                        ->orderBy('created_at', 'DESC')->get();
+
+
+
+        return view('question.show', ['question' => $question, 
+                                     'answers' => $a]);
     }
 
     /**

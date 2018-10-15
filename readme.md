@@ -8,13 +8,9 @@ Features
 * User can ask questions in specific categories
 * User can add answer to any question
 * Categories which display questions (with some statistics)
-* Admin can remove any question
+* Admin can remove any question and answer
 * User can remove own question only if it does not have any answers 
-
-Todo
-* Implement upvoting system 
-* Highlight answer with most upvotes
-* Allow admin to remove answers
+* User can up vote a Answer (answers are sorted from the most helpful to the oldest one)
 
 ![Quan](quan.png?raw=true "Quan")
 

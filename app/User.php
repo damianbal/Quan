@@ -7,10 +7,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Core\Relations\HasAnswers;
 use App\Core\Relations\HasQuestions;
+use App\Core\Relations\HasVotes;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasAnswers, HasQuestions;
+    use Notifiable, HasAnswers, HasQuestions, HasVotes;
 
     /**
      * The attributes that are mass assignable.
